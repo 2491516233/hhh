@@ -8,13 +8,8 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: 发送 pushplus 通知
+      - name: 发送 Server 酱通知
         run: |
-          curl -X POST "https://www.pushplus.lishutao.com/send" \
-            -H "Content-Type: application/json" \
-            -d '{
-              "token": "${{ secrets.PUSHPLUS_TOKEN }}",
-              "title": "hhh 仓库有更新",
-              "content": "仓库 hhh 有新提交: ${{ github.event.head_commit.message }}",
-              "template": "markdown"
-            }'
+          curl -X POST "https://sctapi.ftqq.com/${{ secrets.SCT_TOKEN }}.send" \
+            -d "title=hhh 仓库有更新" \
+            -d "desp=仓库 hhh 有新提交: ${{ github.event.head_commit.message }}"
